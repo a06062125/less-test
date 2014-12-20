@@ -7,7 +7,23 @@
  * */
 .gbtn,
 .gbtn-default,
-.gbtn-success {
+.gbtn-success,
+.gbtn-primary,
+.gbtn-info,
+.gbtn-warning,
+.gbtn-danger,
+.gbtn-add,
+.gbtn-edit,
+.gbtn-query,
+.gbtn-submit,
+.gbtn-cancel,
+.gbtn-label,
+.gbtn-on,
+.gbtn-off {
+  padding: 4px 6px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 0px;
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -16,6 +32,7 @@
   border: 1px solid transparent;
   white-space: nowrap;
   font-weight: normal;
+  text-decoration: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -23,52 +40,28 @@
 }
 .gbtn:hover,
 .gbtn:focus,
-.gbtn.focus,
-.gbtn-default:hover,
-.gbtn-default:focus,
-.gbtn-default.focus,
-.gbtn-success:hover,
-.gbtn-success:focus,
-.gbtn-success.focus {
+.gbtn.focus {
   text-decoration: none;
 }
 .gbtn:active,
-.gbtn.active,
-.gbtn-default:active,
-.gbtn-default.active,
-.gbtn-success:active,
-.gbtn-success.active {
+.gbtn.active {
   outline: 0;
   background-image: none;
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 .gbtn.disabled,
 .gbtn[disabled],
-fieldset[disabled] .gbtn,
-.gbtn-default.disabled,
-.gbtn-default[disabled],
-fieldset[disabled] .gbtn-default,
-.gbtn-success.disabled,
-.gbtn-success[disabled],
-fieldset[disabled] .gbtn-success {
+fieldset[disabled] .gbtn {
   cursor: not-allowed;
   pointer-events: none;
   opacity: 0.65;
   filter: alpha(opacity=65);
   box-shadow: none;
 }
-.gbtn-block {
-  display: block;
-  width: 100%;
-}
-.gbtn-block + .gbtn-block {
-  margin-top: 5px;
-}
-input[type="submit"].gbtn-block,
-input[type="reset"].gbtn-block,
-input[type="button"].gbtn-block {
-  width: 100%;
-}
+/* 颜色 */
+/* gbtn in form */
+/* gbtn in switch */
+/* 尺寸 */
 .gbtn-default {
   color: #333333;
   background-color: #ffffff;
@@ -158,6 +151,621 @@ fieldset[disabled] .gbtn-success.active {
 .gbtn-success .badge {
   color: #5cb85c;
   background-color: #ffffff;
+}
+.gbtn-primary {
+  color: #ffffff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.gbtn-primary:hover,
+.gbtn-primary:focus,
+.gbtn-primary.focus,
+.gbtn-primary:active,
+.gbtn-primary.active,
+.open > .dropdown-toggle.gbtn-primary {
+  color: #ffffff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+.gbtn-primary:active,
+.gbtn-primary.active,
+.open > .dropdown-toggle.gbtn-primary {
+  background-image: none;
+}
+.gbtn-primary.disabled,
+.gbtn-primary[disabled],
+fieldset[disabled] .gbtn-primary,
+.gbtn-primary.disabled:hover,
+.gbtn-primary[disabled]:hover,
+fieldset[disabled] .gbtn-primary:hover,
+.gbtn-primary.disabled:focus,
+.gbtn-primary[disabled]:focus,
+fieldset[disabled] .gbtn-primary:focus,
+.gbtn-primary.disabled.focus,
+.gbtn-primary[disabled].focus,
+fieldset[disabled] .gbtn-primary.focus,
+.gbtn-primary.disabled:active,
+.gbtn-primary[disabled]:active,
+fieldset[disabled] .gbtn-primary:active,
+.gbtn-primary.disabled.active,
+.gbtn-primary[disabled].active,
+fieldset[disabled] .gbtn-primary.active {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.gbtn-primary .badge {
+  color: #5bc0de;
+  background-color: #ffffff;
+}
+.gbtn-info {
+  color: #ffffff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.gbtn-info:hover,
+.gbtn-info:focus,
+.gbtn-info.focus,
+.gbtn-info:active,
+.gbtn-info.active,
+.open > .dropdown-toggle.gbtn-info {
+  color: #ffffff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+.gbtn-info:active,
+.gbtn-info.active,
+.open > .dropdown-toggle.gbtn-info {
+  background-image: none;
+}
+.gbtn-info.disabled,
+.gbtn-info[disabled],
+fieldset[disabled] .gbtn-info,
+.gbtn-info.disabled:hover,
+.gbtn-info[disabled]:hover,
+fieldset[disabled] .gbtn-info:hover,
+.gbtn-info.disabled:focus,
+.gbtn-info[disabled]:focus,
+fieldset[disabled] .gbtn-info:focus,
+.gbtn-info.disabled.focus,
+.gbtn-info[disabled].focus,
+fieldset[disabled] .gbtn-info.focus,
+.gbtn-info.disabled:active,
+.gbtn-info[disabled]:active,
+fieldset[disabled] .gbtn-info:active,
+.gbtn-info.disabled.active,
+.gbtn-info[disabled].active,
+fieldset[disabled] .gbtn-info.active {
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.gbtn-info .badge {
+  color: #337ab7;
+  background-color: #ffffff;
+}
+.gbtn-warning {
+  color: #ffffff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.gbtn-warning:hover,
+.gbtn-warning:focus,
+.gbtn-warning.focus,
+.gbtn-warning:active,
+.gbtn-warning.active,
+.open > .dropdown-toggle.gbtn-warning {
+  color: #ffffff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+.gbtn-warning:active,
+.gbtn-warning.active,
+.open > .dropdown-toggle.gbtn-warning {
+  background-image: none;
+}
+.gbtn-warning.disabled,
+.gbtn-warning[disabled],
+fieldset[disabled] .gbtn-warning,
+.gbtn-warning.disabled:hover,
+.gbtn-warning[disabled]:hover,
+fieldset[disabled] .gbtn-warning:hover,
+.gbtn-warning.disabled:focus,
+.gbtn-warning[disabled]:focus,
+fieldset[disabled] .gbtn-warning:focus,
+.gbtn-warning.disabled.focus,
+.gbtn-warning[disabled].focus,
+fieldset[disabled] .gbtn-warning.focus,
+.gbtn-warning.disabled:active,
+.gbtn-warning[disabled]:active,
+fieldset[disabled] .gbtn-warning:active,
+.gbtn-warning.disabled.active,
+.gbtn-warning[disabled].active,
+fieldset[disabled] .gbtn-warning.active {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.gbtn-warning .badge {
+  color: #f0ad4e;
+  background-color: #ffffff;
+}
+.gbtn-danger {
+  color: #ffffff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.gbtn-danger:hover,
+.gbtn-danger:focus,
+.gbtn-danger.focus,
+.gbtn-danger:active,
+.gbtn-danger.active,
+.open > .dropdown-toggle.gbtn-danger {
+  color: #ffffff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+.gbtn-danger:active,
+.gbtn-danger.active,
+.open > .dropdown-toggle.gbtn-danger {
+  background-image: none;
+}
+.gbtn-danger.disabled,
+.gbtn-danger[disabled],
+fieldset[disabled] .gbtn-danger,
+.gbtn-danger.disabled:hover,
+.gbtn-danger[disabled]:hover,
+fieldset[disabled] .gbtn-danger:hover,
+.gbtn-danger.disabled:focus,
+.gbtn-danger[disabled]:focus,
+fieldset[disabled] .gbtn-danger:focus,
+.gbtn-danger.disabled.focus,
+.gbtn-danger[disabled].focus,
+fieldset[disabled] .gbtn-danger.focus,
+.gbtn-danger.disabled:active,
+.gbtn-danger[disabled]:active,
+fieldset[disabled] .gbtn-danger:active,
+.gbtn-danger.disabled.active,
+.gbtn-danger[disabled].active,
+fieldset[disabled] .gbtn-danger.active {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.gbtn-danger .badge {
+  color: #f0ad4e;
+  background-color: #ffffff;
+}
+.gbtn-add {
+  color: #ffffff;
+  background-color: #57b382;
+  border-color: #4ba675;
+}
+.gbtn-add:hover,
+.gbtn-add:focus,
+.gbtn-add.focus,
+.gbtn-add:active,
+.gbtn-add.active,
+.open > .dropdown-toggle.gbtn-add {
+  color: #ffffff;
+  background-color: #439469;
+  border-color: #387b57;
+}
+.gbtn-add:active,
+.gbtn-add.active,
+.open > .dropdown-toggle.gbtn-add {
+  background-image: none;
+}
+.gbtn-add.disabled,
+.gbtn-add[disabled],
+fieldset[disabled] .gbtn-add,
+.gbtn-add.disabled:hover,
+.gbtn-add[disabled]:hover,
+fieldset[disabled] .gbtn-add:hover,
+.gbtn-add.disabled:focus,
+.gbtn-add[disabled]:focus,
+fieldset[disabled] .gbtn-add:focus,
+.gbtn-add.disabled.focus,
+.gbtn-add[disabled].focus,
+fieldset[disabled] .gbtn-add.focus,
+.gbtn-add.disabled:active,
+.gbtn-add[disabled]:active,
+fieldset[disabled] .gbtn-add:active,
+.gbtn-add.disabled.active,
+.gbtn-add[disabled].active,
+fieldset[disabled] .gbtn-add.active {
+  background-color: #57b382;
+  border-color: #4ba675;
+}
+.gbtn-add .badge {
+  color: #57b382;
+  background-color: #ffffff;
+}
+.gbtn-delete {
+  color: #ffffff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.gbtn-delete:hover,
+.gbtn-delete:focus,
+.gbtn-delete.focus,
+.gbtn-delete:active,
+.gbtn-delete.active,
+.open > .dropdown-toggle.gbtn-delete {
+  color: #ffffff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+.gbtn-delete:active,
+.gbtn-delete.active,
+.open > .dropdown-toggle.gbtn-delete {
+  background-image: none;
+}
+.gbtn-delete.disabled,
+.gbtn-delete[disabled],
+fieldset[disabled] .gbtn-delete,
+.gbtn-delete.disabled:hover,
+.gbtn-delete[disabled]:hover,
+fieldset[disabled] .gbtn-delete:hover,
+.gbtn-delete.disabled:focus,
+.gbtn-delete[disabled]:focus,
+fieldset[disabled] .gbtn-delete:focus,
+.gbtn-delete.disabled.focus,
+.gbtn-delete[disabled].focus,
+fieldset[disabled] .gbtn-delete.focus,
+.gbtn-delete.disabled:active,
+.gbtn-delete[disabled]:active,
+fieldset[disabled] .gbtn-delete:active,
+.gbtn-delete.disabled.active,
+.gbtn-delete[disabled].active,
+fieldset[disabled] .gbtn-delete.active {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.gbtn-delete .badge {
+  color: #f0ad4e;
+  background-color: #ffffff;
+}
+.gbtn-edit {
+  color: #ffffff;
+  background-color: #57b382;
+  border-color: #4ba675;
+}
+.gbtn-edit:hover,
+.gbtn-edit:focus,
+.gbtn-edit.focus,
+.gbtn-edit:active,
+.gbtn-edit.active,
+.open > .dropdown-toggle.gbtn-edit {
+  color: #ffffff;
+  background-color: #439469;
+  border-color: #387b57;
+}
+.gbtn-edit:active,
+.gbtn-edit.active,
+.open > .dropdown-toggle.gbtn-edit {
+  background-image: none;
+}
+.gbtn-edit.disabled,
+.gbtn-edit[disabled],
+fieldset[disabled] .gbtn-edit,
+.gbtn-edit.disabled:hover,
+.gbtn-edit[disabled]:hover,
+fieldset[disabled] .gbtn-edit:hover,
+.gbtn-edit.disabled:focus,
+.gbtn-edit[disabled]:focus,
+fieldset[disabled] .gbtn-edit:focus,
+.gbtn-edit.disabled.focus,
+.gbtn-edit[disabled].focus,
+fieldset[disabled] .gbtn-edit.focus,
+.gbtn-edit.disabled:active,
+.gbtn-edit[disabled]:active,
+fieldset[disabled] .gbtn-edit:active,
+.gbtn-edit.disabled.active,
+.gbtn-edit[disabled].active,
+fieldset[disabled] .gbtn-edit.active {
+  background-color: #57b382;
+  border-color: #4ba675;
+}
+.gbtn-edit .badge {
+  color: #57b382;
+  background-color: #ffffff;
+}
+.gbtn-query {
+  color: #ffffff;
+  background-color: #57b382;
+  border-color: #4ba675;
+}
+.gbtn-query:hover,
+.gbtn-query:focus,
+.gbtn-query.focus,
+.gbtn-query:active,
+.gbtn-query.active,
+.open > .dropdown-toggle.gbtn-query {
+  color: #ffffff;
+  background-color: #439469;
+  border-color: #387b57;
+}
+.gbtn-query:active,
+.gbtn-query.active,
+.open > .dropdown-toggle.gbtn-query {
+  background-image: none;
+}
+.gbtn-query.disabled,
+.gbtn-query[disabled],
+fieldset[disabled] .gbtn-query,
+.gbtn-query.disabled:hover,
+.gbtn-query[disabled]:hover,
+fieldset[disabled] .gbtn-query:hover,
+.gbtn-query.disabled:focus,
+.gbtn-query[disabled]:focus,
+fieldset[disabled] .gbtn-query:focus,
+.gbtn-query.disabled.focus,
+.gbtn-query[disabled].focus,
+fieldset[disabled] .gbtn-query.focus,
+.gbtn-query.disabled:active,
+.gbtn-query[disabled]:active,
+fieldset[disabled] .gbtn-query:active,
+.gbtn-query.disabled.active,
+.gbtn-query[disabled].active,
+fieldset[disabled] .gbtn-query.active {
+  background-color: #57b382;
+  border-color: #4ba675;
+}
+.gbtn-query .badge {
+  color: #57b382;
+  background-color: #ffffff;
+}
+.gbtn-submit {
+  color: #ffffff;
+  background-color: #57b382;
+  border-color: #4ba675;
+}
+.gbtn-submit:hover,
+.gbtn-submit:focus,
+.gbtn-submit.focus,
+.gbtn-submit:active,
+.gbtn-submit.active,
+.open > .dropdown-toggle.gbtn-submit {
+  color: #ffffff;
+  background-color: #439469;
+  border-color: #387b57;
+}
+.gbtn-submit:active,
+.gbtn-submit.active,
+.open > .dropdown-toggle.gbtn-submit {
+  background-image: none;
+}
+.gbtn-submit.disabled,
+.gbtn-submit[disabled],
+fieldset[disabled] .gbtn-submit,
+.gbtn-submit.disabled:hover,
+.gbtn-submit[disabled]:hover,
+fieldset[disabled] .gbtn-submit:hover,
+.gbtn-submit.disabled:focus,
+.gbtn-submit[disabled]:focus,
+fieldset[disabled] .gbtn-submit:focus,
+.gbtn-submit.disabled.focus,
+.gbtn-submit[disabled].focus,
+fieldset[disabled] .gbtn-submit.focus,
+.gbtn-submit.disabled:active,
+.gbtn-submit[disabled]:active,
+fieldset[disabled] .gbtn-submit:active,
+.gbtn-submit.disabled.active,
+.gbtn-submit[disabled].active,
+fieldset[disabled] .gbtn-submit.active {
+  background-color: #57b382;
+  border-color: #4ba675;
+}
+.gbtn-submit .badge {
+  color: #57b382;
+  background-color: #ffffff;
+}
+.gbtn-cancel {
+  color: #ffffff;
+  background-color: #383c4a;
+  border-color: #2d303b;
+}
+.gbtn-cancel:hover,
+.gbtn-cancel:focus,
+.gbtn-cancel.focus,
+.gbtn-cancel:active,
+.gbtn-cancel.active,
+.open > .dropdown-toggle.gbtn-cancel {
+  color: #ffffff;
+  background-color: #22242d;
+  border-color: #131419;
+}
+.gbtn-cancel:active,
+.gbtn-cancel.active,
+.open > .dropdown-toggle.gbtn-cancel {
+  background-image: none;
+}
+.gbtn-cancel.disabled,
+.gbtn-cancel[disabled],
+fieldset[disabled] .gbtn-cancel,
+.gbtn-cancel.disabled:hover,
+.gbtn-cancel[disabled]:hover,
+fieldset[disabled] .gbtn-cancel:hover,
+.gbtn-cancel.disabled:focus,
+.gbtn-cancel[disabled]:focus,
+fieldset[disabled] .gbtn-cancel:focus,
+.gbtn-cancel.disabled.focus,
+.gbtn-cancel[disabled].focus,
+fieldset[disabled] .gbtn-cancel.focus,
+.gbtn-cancel.disabled:active,
+.gbtn-cancel[disabled]:active,
+fieldset[disabled] .gbtn-cancel:active,
+.gbtn-cancel.disabled.active,
+.gbtn-cancel[disabled].active,
+fieldset[disabled] .gbtn-cancel.active {
+  background-color: #383c4a;
+  border-color: #2d303b;
+}
+.gbtn-cancel .badge {
+  color: #383c4a;
+  background-color: #ffffff;
+}
+.gbtn-label {
+  color: #333333;
+  background-color: #cccccc;
+  border-color: #bfbfbf;
+}
+.gbtn-label:hover,
+.gbtn-label:focus,
+.gbtn-label.focus,
+.gbtn-label:active,
+.gbtn-label.active,
+.open > .dropdown-toggle.gbtn-label {
+  color: #333333;
+  background-color: #b3b3b3;
+  border-color: #a1a1a1;
+}
+.gbtn-label:active,
+.gbtn-label.active,
+.open > .dropdown-toggle.gbtn-label {
+  background-image: none;
+}
+.gbtn-label.disabled,
+.gbtn-label[disabled],
+fieldset[disabled] .gbtn-label,
+.gbtn-label.disabled:hover,
+.gbtn-label[disabled]:hover,
+fieldset[disabled] .gbtn-label:hover,
+.gbtn-label.disabled:focus,
+.gbtn-label[disabled]:focus,
+fieldset[disabled] .gbtn-label:focus,
+.gbtn-label.disabled.focus,
+.gbtn-label[disabled].focus,
+fieldset[disabled] .gbtn-label.focus,
+.gbtn-label.disabled:active,
+.gbtn-label[disabled]:active,
+fieldset[disabled] .gbtn-label:active,
+.gbtn-label.disabled.active,
+.gbtn-label[disabled].active,
+fieldset[disabled] .gbtn-label.active {
+  background-color: #cccccc;
+  border-color: #bfbfbf;
+}
+.gbtn-label .badge {
+  color: #cccccc;
+  background-color: #333333;
+}
+.gbtn-on {
+  color: #ffffff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.gbtn-on:hover,
+.gbtn-on:focus,
+.gbtn-on.focus,
+.gbtn-on:active,
+.gbtn-on.active,
+.open > .dropdown-toggle.gbtn-on {
+  color: #ffffff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+.gbtn-on:active,
+.gbtn-on.active,
+.open > .dropdown-toggle.gbtn-on {
+  background-image: none;
+}
+.gbtn-on.disabled,
+.gbtn-on[disabled],
+fieldset[disabled] .gbtn-on,
+.gbtn-on.disabled:hover,
+.gbtn-on[disabled]:hover,
+fieldset[disabled] .gbtn-on:hover,
+.gbtn-on.disabled:focus,
+.gbtn-on[disabled]:focus,
+fieldset[disabled] .gbtn-on:focus,
+.gbtn-on.disabled.focus,
+.gbtn-on[disabled].focus,
+fieldset[disabled] .gbtn-on.focus,
+.gbtn-on.disabled:active,
+.gbtn-on[disabled]:active,
+fieldset[disabled] .gbtn-on:active,
+.gbtn-on.disabled.active,
+.gbtn-on[disabled].active,
+fieldset[disabled] .gbtn-on.active {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.gbtn-on .badge {
+  color: #f0ad4e;
+  background-color: #ffffff;
+}
+.gbtn-off {
+  color: #ffffff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.gbtn-off:hover,
+.gbtn-off:focus,
+.gbtn-off.focus,
+.gbtn-off:active,
+.gbtn-off.active,
+.open > .dropdown-toggle.gbtn-off {
+  color: #ffffff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+.gbtn-off:active,
+.gbtn-off.active,
+.open > .dropdown-toggle.gbtn-off {
+  background-image: none;
+}
+.gbtn-off.disabled,
+.gbtn-off[disabled],
+fieldset[disabled] .gbtn-off,
+.gbtn-off.disabled:hover,
+.gbtn-off[disabled]:hover,
+fieldset[disabled] .gbtn-off:hover,
+.gbtn-off.disabled:focus,
+.gbtn-off[disabled]:focus,
+fieldset[disabled] .gbtn-off:focus,
+.gbtn-off.disabled.focus,
+.gbtn-off[disabled].focus,
+fieldset[disabled] .gbtn-off.focus,
+.gbtn-off.disabled:active,
+.gbtn-off[disabled]:active,
+fieldset[disabled] .gbtn-off:active,
+.gbtn-off.disabled.active,
+.gbtn-off[disabled].active,
+fieldset[disabled] .gbtn-off.active {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.gbtn-off .badge {
+  color: #f0ad4e;
+  background-color: #ffffff;
+}
+.gbtn-lg {
+  padding: 8px 12px;
+  font-size: 18px;
+  line-height: 1.5;
+  border-radius: 0px;
+}
+.gbtn-sm {
+  padding: 3px 5px;
+  font-size: 12px;
+  line-height: 1.33;
+  border-radius: 0px;
+}
+.gbtn-xs {
+  padding: 1px 3px;
+  font-size: 12px;
+  line-height: 1.33;
+  border-radius: 0px;
+}
+.gbtn-block {
+  display: block;
+  width: 100%;
+}
+.gbtn-block + .gbtn-block {
+  margin-top: 5px;
+}
+input[type="submit"].gbtn-block,
+input[type="reset"].gbtn-block,
+input[type="button"].gbtn-block {
+  width: 100%;
 }
 * {
   padding: 0px;

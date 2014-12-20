@@ -12,6 +12,7 @@
 // 1. GButton common styles
 // -------------------------------------------------- 
 .gbtn {
+    .gbtn-size(base);
     display: inline-block;
     margin-bottom: 0; // For input.btn
     text-align: center;
@@ -20,6 +21,7 @@
     border: 1px solid transparent;
     white-space: nowrap;
     font-weight: @gbtn-font-weight;
+    text-decoration: none;
     .user-select(none);
     &, &:active, &.active {
         &:focus, &.focus {
@@ -56,24 +58,12 @@
     @opacity-ie: (@opacity * 100);
     filter: ~"alpha(opacity=@{opacity-ie})";
 }
-.gbtn-block {
-    display: block;
-    width: 100%;
-}
-// Vertically space out multiple block buttons
-.gbtn-block + .gbtn-block {
-    margin-top: 5px;
-}
-// Specificity overrides
-input[type="submit"], input[type="reset"], input[type="button"] {
-    &.gbtn-block {
-        width: 100%;
-    }
-}
 // -------------------------------------------------- 
 // 2. GButton variants
 // -------------------------------------------------- 
-.gbtn-variant() {
+.gbtn-variant(@color;
+@background;
+@border) {
     color: @color;
     background-color: @background;
     border-color: @border;
@@ -110,37 +100,55 @@ input[type="submit"], input[type="reset"], input[type="button"] {
 // -------------------------------------------------- 
 // 3. GButton 流水线
 // --------------------------------------------------
+/* 颜色 */
+
 .gbtn-variant(default) {
     @color: #333;
     @background: #fff;
     @border: #ccc;
-    .gbtn-variant();
+    .gbtn-variant(@color;
+    @background;
+    @border);
 }
 .gbtn-variant(primary) {
     @color: #fff;
     @background: #5bc0de;
     @border: darken(@background, 5%);
+    .gbtn-variant(@color;
+    @background;
+    @border);
 }
 .gbtn-variant(info) {
     @color: #fff;
     @background: darken(#428bca, 6.5%);
     @border: darken(@background, 5%);
+    .gbtn-variant(@color;
+    @background;
+    @border);
 }
 .gbtn-variant(success) {
     @color: #fff;
     @background: #5cb85c;
     @border: darken(@background, 5%);
-    .gbtn-variant();
+    .gbtn-variant(@color;
+    @background;
+    @border);
 }
 .gbtn-variant(warning) {
     @color: #fff;
     @background: #f0ad4e;
     @border: darken(@background, 5%);
+    .gbtn-variant(@color;
+    @background;
+    @border);
 }
 .gbtn-variant(danger) {
     @color: #fff;
     @background: #f0ad4e;
     @border: darken(@background, 5%);
+    .gbtn-variant(@color;
+    @background;
+    @border);
 }
 .gbtn-variant(link) {
     @color: darken(#428bca, 6.5%);
@@ -148,26 +156,204 @@ input[type="submit"], input[type="reset"], input[type="button"] {
     @border: darken(@background, 5%);
     @disabled-color: #777;
     @hover-color: darken(@color, 15%);
+    .gbtn-variant(@color;
+    @background;
+    @border);
 }
+/* gbtn in form */
+
+.gbtn-variant(add) {
+    @color: #fff;
+    @background: #57b382;
+    @border: darken(@background, 5%);
+    .gbtn-variant(@color;
+    @background;
+    @border);
+}
+.gbtn-variant(delete) {
+    .gbtn-variant(danger);
+}
+.gbtn-variant(edit) {
+    .gbtn-variant(add);
+}
+.gbtn-variant(query) {
+    .gbtn-variant(add);
+}
+.gbtn-variant(submit) {
+    .gbtn-variant(add);
+}
+.gbtn-variant(cancel) {
+    @color: #fff;
+    @background: #383c4a;
+    @border: darken(@background, 5%);
+    .gbtn-variant(@color;
+    @background;
+    @border);
+}
+/* gbtn in switch */
+
+.gbtn-variant(label) {
+    @color: #333;
+    @background: #ccc;
+    @border: darken(@background, 5%);
+    .gbtn-variant(@color;
+    @background;
+    @border);
+}
+.gbtn-variant(on) {
+    @color: #fff;
+    @background: #f0ad4e;
+    @border: darken(@background, 5%);
+    .gbtn-variant(@color;
+    @background;
+    @border);
+}
+.gbtn-variant(off) {
+    @color: #fff;
+    @background: #f0ad4e;
+    @border: darken(@background, 5%);
+    .gbtn-variant(@color;
+    @background;
+    @border);
+}
+/* 尺寸 */
 
 .gbtn-size(base) {
-    @padding-base-vertical: 4px;
-    @padding-base-horizontal: 6px;
-    // .gbtn-size(@padding-base-vertical; @padding-base-horizontal );
+    @padding-vertical: 4px;
+    @padding-horizontal: 6px;
+    @font-size: 14px;
+    @line-height: 1.428571429;
+    @border-radius: 0px;
+    .gbtn-size(@padding-vertical;
+    @padding-horizontal;
+    @font-size;
+    @line-height;
+    @border-radius)
+}
+.gbtn-size(lg) {
+    @padding-vertical: 8px;
+    @padding-horizontal: 12px;
+    @font-size: ceil((14px * 1.25)); // ~18px;
+    @line-height: 1.5;
+    @border-radius: 0px;
+    .gbtn-size(@padding-vertical;
+    @padding-horizontal;
+    @font-size;
+    @line-height;
+    @border-radius)
+}
+.gbtn-size(sm) {
+    @padding-vertical: 3px;
+    @padding-horizontal: 5px;
+    @font-size: ceil((14px * 0.85)); // ~12px;
+    @line-height: 1.33;
+    @border-radius: 0px;
+    .gbtn-size(@padding-vertical;
+    @padding-horizontal;
+    @font-size;
+    @line-height;
+    @border-radius)
+}
+.gbtn-size(xs) {
+    @padding-vertical: 1px;
+    @padding-horizontal: 3px;
+    @font-size: ceil((14px * 0.85)); // ~12px;;
+    @line-height: 1.33;
+    @border-radius: 0px;
+    .gbtn-size(@padding-vertical;
+    @padding-horizontal;
+    @font-size;
+    @line-height;
+    @border-radius)
 }
 // -------------------------------------------------- 
-// 4. GButton factory
+// 4. GButton make
 // --------------------------------------------------
-.gbtnFactory(@varient: default) {
-    &:extend(.gbtn all);
-    .gbtn-variant(@varient);
+.gbtn {
+    &-default {
+        &:extend(.gbtn);
+        .gbtn-variant(default);
+    }
+    &-success {
+        &:extend(.gbtn);
+        .gbtn-variant(success);
+    }
+    &-primary {
+        &:extend(.gbtn);
+        .gbtn-variant(primary);
+    }
+    &-info {
+        &:extend(.gbtn);
+        .gbtn-variant(info);
+    }
+    &-warning {
+        &:extend(.gbtn);
+        .gbtn-variant(warning);
+    }
+    &-danger {
+        &:extend(.gbtn);
+        .gbtn-variant(danger);
+    }
+    &-add {
+        &:extend(.gbtn);
+        .gbtn-variant(add);
+    }
+    &-delete {
+        .gbtn-variant(delete);
+    }
+    &-edit {
+        &:extend(.gbtn);
+        .gbtn-variant(edit);
+    }
+    &-query {
+        &:extend(.gbtn);
+        .gbtn-variant(query);
+    }
+    &-submit {
+        &:extend(.gbtn);
+        .gbtn-variant(submit);
+    }
+    &-cancel {
+        &:extend(.gbtn);
+        .gbtn-variant(cancel);
+    }
+    &-label {
+        &:extend(.gbtn);
+        .gbtn-variant(label);
+    }
+    &-on {
+        &:extend(.gbtn);
+        .gbtn-variant(on);
+    }
+    &-off {
+        &:extend(.gbtn);
+        .gbtn-variant(off);
+    }
+}
+.gbtn {
+    &-lg {
+        .gbtn-size(lg);
+    }
+    &-sm {
+        .gbtn-size(sm);
+    }
+    &-xs {
+        .gbtn-size(xs);
+    }
 }
 // -------------------------------------------------- 
-// 5. GButton make
+// 4. GButton  personalized
 // --------------------------------------------------
-.gbtn-default {
-    .gbtnFactory(default);
+.gbtn-block {
+    display: block;
+    width: 100%;
+    & + & {
+        // Vertically space out multiple block buttons
+        margin-top: 5px;
+    }
 }
-.gbtn-success {
-    .gbtnFactory(success);
+input[type="submit"], input[type="reset"], input[type="button"] {
+    &.gbtn-block {
+        width: 100%;
+    }
 }
