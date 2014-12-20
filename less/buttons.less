@@ -1,0 +1,173 @@
+/* 
+ *  1. 基础属性
+ *  2. 小模具,配置
+ *  2. 工厂-组装
+ *  3. 具体的产品
+ *  @description , 这里主要用到了Less的 “模式匹配” 与 “Mixins as Functions”
+ * */
+
+@cursor-disabled: not-allowed;
+@gbtn-font-weight: normal;
+// -------------------------------------------------- 
+// 1. GButton common styles
+// -------------------------------------------------- 
+.gbtn {
+    display: inline-block;
+    margin-bottom: 0; // For input.btn
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    font-weight: @gbtn-font-weight;
+    .user-select(none);
+    &, &:active, &.active {
+        &:focus, &.focus {
+            //tips: 这段好像用不上
+            //.tab-focus();
+        }
+    }
+    &:hover, &:focus, &.focus {
+        text-decoration: none;
+    }
+    &:active, &.active {
+        outline: 0;
+        background-image: none;
+        box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    }
+    &.disabled, &[disabled], fieldset[disabled] & {
+        cursor: @cursor-disabled;
+        pointer-events: none; // Future-proof disabling of clicks
+        .opacity(.65);
+        box-shadow: none;
+    }
+}
+// User select
+// For selecting text on the page
+.user-select(@select) {
+    -webkit-user-select: @select;
+    -moz-user-select: @select;
+    -ms-user-select: @select; // IE10+
+    user-select: @select;
+}
+.opacity(@opacity) {
+    opacity: @opacity;
+    // IE8 filter
+    @opacity-ie: (@opacity * 100);
+    filter: ~"alpha(opacity=@{opacity-ie})";
+}
+.gbtn-block {
+    display: block;
+    width: 100%;
+}
+// Vertically space out multiple block buttons
+.gbtn-block + .gbtn-block {
+    margin-top: 5px;
+}
+// Specificity overrides
+input[type="submit"], input[type="reset"], input[type="button"] {
+    &.gbtn-block {
+        width: 100%;
+    }
+}
+// -------------------------------------------------- 
+// 2. GButton variants
+// -------------------------------------------------- 
+.gbtn-variant() {
+    color: @color;
+    background-color: @background;
+    border-color: @border;
+    &:hover, &:focus, &.focus, &:active, &.active, .open > .dropdown-toggle& {
+        color: @color;
+        background-color: darken(@background, 10%);
+        border-color: darken(@border, 12%);
+    }
+    &:active, &.active, .open > .dropdown-toggle& {
+        background-image: none;
+    }
+    &.disabled, &[disabled], fieldset[disabled] & {
+        &, &:hover, &:focus, &.focus, &:active, &.active {
+            background-color: @background;
+            border-color: @border;
+        }
+    }
+    .badge {
+        color: @background;
+        background-color: @color;
+    }
+}
+// Button sizes
+.gbtn-size(@padding-vertical;
+@padding-horizontal;
+@font-size;
+@line-height;
+@border-radius) {
+    padding: @padding-vertical @padding-horizontal;
+    font-size: @font-size;
+    line-height: @line-height;
+    border-radius: @border-radius;
+}
+// -------------------------------------------------- 
+// 3. GButton 流水线
+// --------------------------------------------------
+.gbtn-variant(default) {
+    @color: #333;
+    @background: #fff;
+    @border: #ccc;
+    .gbtn-variant();
+}
+.gbtn-variant(primary) {
+    @color: #fff;
+    @background: #5bc0de;
+    @border: darken(@background, 5%);
+}
+.gbtn-variant(info) {
+    @color: #fff;
+    @background: darken(#428bca, 6.5%);
+    @border: darken(@background, 5%);
+}
+.gbtn-variant(success) {
+    @color: #fff;
+    @background: #5cb85c;
+    @border: darken(@background, 5%);
+    .gbtn-variant();
+}
+.gbtn-variant(warning) {
+    @color: #fff;
+    @background: #f0ad4e;
+    @border: darken(@background, 5%);
+}
+.gbtn-variant(danger) {
+    @color: #fff;
+    @background: #f0ad4e;
+    @border: darken(@background, 5%);
+}
+.gbtn-variant(link) {
+    @color: darken(#428bca, 6.5%);
+    @background: #fff;
+    @border: darken(@background, 5%);
+    @disabled-color: #777;
+    @hover-color: darken(@color, 15%);
+}
+
+.gbtn-size(base) {
+    @padding-base-vertical: 4px;
+    @padding-base-horizontal: 6px;
+    // .gbtn-size(@padding-base-vertical; @padding-base-horizontal );
+}
+// -------------------------------------------------- 
+// 4. GButton factory
+// --------------------------------------------------
+.gbtnFactory(@varient: default) {
+    &:extend(.gbtn all);
+    .gbtn-variant(@varient);
+}
+// -------------------------------------------------- 
+// 5. GButton make
+// --------------------------------------------------
+.gbtn-default {
+    .gbtnFactory(default);
+}
+.gbtn-success {
+    .gbtnFactory(success);
+}
