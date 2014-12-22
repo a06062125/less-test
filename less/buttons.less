@@ -3,15 +3,17 @@
  *  2. 小模具,配置
  *  2. 工厂-组装
  *  3. 具体的产品
- *  @description , 这里主要用到了Less的 “模式匹配” 与 “Mixins as Functions”
+ *  @desc 这里主要用到了Less的 “模式匹配” 与 “Mixins as Functions”
+ *  @desc 事实上，今天再回想下，这些代码有违背奥卡姆剃刀原理；
  * */
-
+a {font-weight: bold;font-size: 22px;}
 @cursor-disabled: not-allowed;
 @gbtn-font-weight: normal;
 // -------------------------------------------------- 
 // 1. GButton common styles
 // -------------------------------------------------- 
 .gbtn {
+    line-height: 28px;
     .gbtn-size(base);
     display: inline-block;
     margin-bottom: 0; // For input.btn
@@ -23,13 +25,16 @@
     font-weight: @gbtn-font-weight;
     text-decoration: none;
     .user-select(none);
+    .test {
+        text-decoration: none;
+    }
     &, &:active, &.active {
         &:focus, &.focus {
             //tips: 这段好像用不上
             //.tab-focus();
         }
     }
-    &:hover, &:focus, &.focus {
+    &:hover, &:focus, &.focused {
         text-decoration: none;
     }
     &:active, &.active {
@@ -67,6 +72,7 @@
     color: @color;
     background-color: @background;
     border-color: @border;
+    text-decoration: none;
     &:hover, &:focus, &.focus, &:active, &.active, .open > .dropdown-toggle& {
         color: @color;
         background-color: darken(@background, 10%);
@@ -152,13 +158,8 @@
 }
 .gbtn-variant(link) {
     @color: darken(#428bca, 6.5%);
-    @background: #fff;
-    @border: darken(@background, 5%);
     @disabled-color: #777;
     @hover-color: darken(@color, 15%);
-    .gbtn-variant(@color;
-    @background;
-    @border);
 }
 /* gbtn in form */
 
@@ -271,65 +272,66 @@
 // --------------------------------------------------
 .gbtn {
     &-default {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(default);
     }
     &-success {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(success);
     }
     &-primary {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(primary);
     }
     &-info {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(info);
     }
     &-warning {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(warning);
     }
     &-danger {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(danger);
     }
     &-add {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(add);
     }
     &-delete {
         .gbtn-variant(delete);
     }
     &-edit {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(edit);
     }
     &-query {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(query);
     }
     &-submit {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(submit);
     }
     &-cancel {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(cancel);
     }
     &-label {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(label);
     }
     &-on {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(on);
     }
     &-off {
-        &:extend(.gbtn);
+        &:extend(.gbtn all);
         .gbtn-variant(off);
     }
 }
+
 .gbtn {
     &-lg {
         .gbtn-size(lg);
@@ -357,3 +359,32 @@ input[type="submit"], input[type="reset"], input[type="button"] {
         width: 100%;
     }
 }
+// Link buttons
+// -------------------------
+// Make a button look and behave like a link
+.gbtn-link {
+    &:extend(.gbtn all);
+    .gbtn-variant(link);
+    color: @color;
+    font-weight: normal;
+    border-radius: 0;
+    &, &:active, &.active, &[disabled], fieldset[disabled] & {
+        background-color: transparent;
+        box-shadow: none;
+    }
+    &, &:hover, &:focus, &:active {
+        border-color: transparent;
+    }
+    &:hover, &:focus {
+        color: @hover-color;
+        text-decoration: underline;
+        background-color: transparent;
+    }
+    &[disabled], fieldset[disabled] & {
+        &:hover, &:focus {
+            color: @disabled-color;
+            text-decoration: none;
+        }
+    }
+}
+

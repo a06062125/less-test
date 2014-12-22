@@ -1,3 +1,4 @@
+var combiner = require('stream-combiner2');
 var gulp = require('gulp');
 //var sourcemaps = require('gulp-sourcemaps');
 var less = require('gulp-less');
@@ -12,7 +13,7 @@ var concat = require("gulp-concat");
  */
 
 var lessDir = './less';
-var cssDir =  './css';
+var cssDir = './css';
 var jsDir = "./js";
 var tplDir = "./html";
 
@@ -25,26 +26,28 @@ var makeAppLessGlobs = function() {
 //console.log(makeAppLessGlobs("masterboard") , makeAppLessGlobs("gameboard"));
 
 gulp.task('less-css', function() {
-    gulp
+        gulp
         .src(lessDir + "/**/*.less")
         .pipe(plumber())
-        .pipe(less({
-            // 所有的 less 都被 @import 的话，可以不写 paths，
-            // 这主要是为了方便添加没有 @import 到 index.less 而直接被页面 link 的 less 文件
-            paths: [
-                lessDir + '/**/*.less'
-            ]
-        }))
-        .pipe(autoprefixer('last 10 versions', 'ie 8'))
-        .pipe(gulp.dest(cssDir + '/'))
+        .pipe(less())
+        .pipe(gulp.dest(cssDir + '/'));
 });
+
+gulp.task('less-test',function(){
+    console.log(lessDir , cssDir);
+     gulp
+        .src("./less/**/*.less")
+        .pipe(less())
+        .pipe(gulp.dest('./css/'));
+});
+
 
 /**
  * 监听
  */
 gulp.task('watch', function() {
-    gulp.watch(lessDir + '/**/*.less', ['less-css']);
+    gulp.watch(lessDir + '/**/*.less', ['less-test']);
 });
 
 
-gulp.task('default', ['less-css', 'watch']);
+gulp.task('default', ['less-test', 'watch']);
